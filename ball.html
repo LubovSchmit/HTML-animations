@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Прыгающий мяч</title>
+</head>
+<body>
+<canvas id="canvas" width="400" height="400"></canvas>
+<script>
+
+var colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple"];
+var pickRandomColor = function (colors) {
+return colors[Math.floor(Math.random() * colors.length)];
+};
+
+var Ball = function () {
+this.x = 100;
+this.y = 100;
+this.xSpeed = Math.random() * 10 - 5;
+this.ySpeed = Math.random() * 10 - 5;
+this.color = pickRandomColor(colors);
+};
+
+
+
+var circle = function (x, y, radius, fillCircle) {
+ctx.beginPath();
+ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+if (fillCircle) {
+ctx.fill();
+ctx.fillStyle = pickRandomColor(colors);
+} else {
+ctx.stroke();
+}
+};
+
+
+Ball.prototype.draw = function () {
+circle(this.x, this.y, 10, true);
+};
+
+
+Ball.prototype.move = function () {
+this.x += this.xSpeed;
+this.y += this.ySpeed;
+};
+
+
+Ball.prototype.checkCollision = function () {
+if (this.x < 0 || this.x > 400) {
+this.xSpeed = -this.xSpeed;
+}
+if (this.y < 0 || this.y > 400) {
+this.ySpeed = -this.ySpeed;
+}
+};
+
+
+var balls = [];
+for (i = 0, i < 10, i++) {
+ball.draw[i]
+}
+
+
+
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+
+var ball = new Ball();
+
+setInterval(function () {
+ctx.clearRect(0, 0, 400, 400);
+ball.draw();
+ball.move();
+ball.checkCollision();
+ctx.strokeRect(0, 0, 400, 400);
+}, 30);
+
+
+
+
+
+
+</script>
+</body>
+</html>
