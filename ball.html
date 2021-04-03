@@ -39,12 +39,10 @@ Ball.prototype.draw = function () {
 circle(this.x, this.y, 10, true);
 };
 
-
 Ball.prototype.move = function () {
 this.x += this.xSpeed;
 this.y += this.ySpeed;
 };
-
 
 Ball.prototype.checkCollision = function () {
 if (this.x < 0 || this.x > 400) {
@@ -55,19 +53,14 @@ this.ySpeed = -this.ySpeed;
 }
 };
 
-
 var balls = [];
 for (i = 0, i < 10, i++) {
 ball.draw[i]
 }
 
-
-
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-
 var ball = new Ball();
-
 setInterval(function () {
 ctx.clearRect(0, 0, 400, 400);
 ball.draw();
@@ -75,12 +68,6 @@ ball.move();
 ball.checkCollision();
 ctx.strokeRect(0, 0, 400, 400);
 }, 30);
-
-
-
-
-
-
 </script>
 </body>
 </html>
